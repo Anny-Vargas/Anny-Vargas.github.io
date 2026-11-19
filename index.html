@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anny Vargas | Portafolio de Ciberseguridad · SOC · Gestión de vulnerabilidades</title>
+  <meta name="description" content="Portafolio de Anny Vargas, estudiante de Ciberseguridad en la UTP (Panamá). Proyectos de análisis de vulnerabilidades, malware, redes y Wazuh SIEM/XDR. Orientada a SOC, Blue Team y gestión de vulnerabilidades.">
+  <meta name="author" content="Anny Vargas">
+  <meta name="theme-color" content="#111116">
+  <meta name="color-scheme" content="dark">
+  <!-- Seguridad básica: política de contenido estricta (sin scripts inline) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://formspree.io; base-uri 'self'; object-src 'none'; form-action 'self' https://formspree.io">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Anny Vargas | Portafolio de Ciberseguridad">
+  <meta property="og:description" content="Estudiante de ciberseguridad que aprende haciendo: analizo vulnerabilidades, estudio malware y diseño redes seguras.">
+  <meta property="og:url" content="https://anny-vargas.github.io/">
+  <meta property="og:locale" content="es_PA">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://anny-vargas.github.io/">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Anny Vargas","jobTitle":"Estudiante de Ciberseguridad","alumniOf":"Universidad Tecnológica de Panamá","address":{"@type":"PostalAddress","addressLocality":"Ciudad de Panamá","addressCountry":"PA"},"url":"https://anny-vargas.github.io/","sameAs":["https://www.linkedin.com/in/annyvargas-desiree/","https://github.com/Anny-Vargas","https://www.credly.com/users/anny-vargas.302dcb76"]}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- ===== Sprite de iconos (SVG inline) ===== -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></symbol>
+      <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12 15h5"/></symbol>
+      <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01M12 7h5M12 17h5"/></symbol>
+      <symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-5.5 5.2M12 11.5l5.5 5.2"/></symbol>
+      <symbol id="i-bug" viewBox="0 0 24 24"><rect x="8" y="8" width="8" height="12" rx="4"/><path d="M9 8a3 3 0 016 0M4 13h4M16 13h4M5 7l3 2M19 7l-3 2M5 20l3-2M19 20l-3-2"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2M8.5 11h5"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.6 14L7 21l5-3 5 3-1.6-7"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-3.6 3.2-5.5 6.5-5.5s6 1.9 6.5 5.5"/><path d="M16 4.7a3.5 3.5 0 010 6.6M18 14.8c2 .6 3.2 2.3 3.5 5.2"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><rect x="7" y="12" width="3" height="5" rx=".5"/><rect x="12" y="8" width="3" height="9" rx=".5"/><rect x="17" y="5" width="3" height="12" rx=".5"/></symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 9v6"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1.5 1.5 0 011.5-1.5h3A1.5 1.5 0 0115 5v2M3 13h18"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1112 20a8 8 0 01-3.8-1z"/><path d="M9 9.5c.3 2 2.4 4.2 4.5 4.8l1.3-1.2-1.8-1-.8.6c-.8-.4-1.6-1.2-2-2l.6-.8-1-1.8z"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
+      <symbol id="i-fork" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v2a3 3 0 003 3h6a3 3 0 003-3V7M12 12v5"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== Encabezado / navegación ===== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Anny Vargas, inicio">
+        <svg class="icon brand-icon" aria-hidden="true"><use href="#i-shield"/></svg>
+        <span>anny<span class="brand-dot">.</span>sec</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+      <nav id="nav" class="nav" aria-label="Principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#certificaciones">Certificaciones</a></li>
+          <li><a href="#reconocimientos">Reconocimientos</a></li>
+          <li><a href="#actividades">Actividades</a></li>
+          <li><a href="#formacion">Formación</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a class="btn btn-linkedin" href="https://www.linkedin.com/in/annyvargas-desiree/" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== A. INICIO ===== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> Purple Team mindset · Panamá</p>
+          <h1 id="hero-title">Hola, soy <span class="gradient-text">Anny Vargas</span></h1>
+          <p class="hero-role">Estudiante de Ciberseguridad <span class="sep">|</span> Future SOC Analyst <span class="sep">|</span> Vulnerability Management</p>
+          <p class="hero-quote">“Estudiante de ciberseguridad que aprende haciendo: analizo vulnerabilidades, estudio malware y diseño redes seguras”.</p>
+          <p class="hero-desc">Estudiante de segundo año en la Universidad Tecnológica de Panamá. Documento con rigor, aprendo rápido y trabajo con orden, con la meta de aportar a la defensa de las organizaciones como analista SOC.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#proyectos">Conoce mis proyectos</a>
+            <a class="btn btn-ghost" href="#contacto">Contáctame</a>
+          </div>
+          <ul class="social-row" aria-label="Perfiles profesionales">
+            <li><a class="social" href="https://www.linkedin.com/in/annyvargas-desiree/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a></li>
+            <li><a class="social" href="https://github.com/Anny-Vargas" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a></li>
+            <li><a class="social" href="https://www.credly.com/users/anny-vargas.302dcb76/badges/credly" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg>Credly</a></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="shield-wrap">
+            <svg class="shield-art" viewBox="0 0 320 320">
+              <defs>
+                <linearGradient id="gShield" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A970FF"/><stop offset="1" stop-color="#6C3CCF"/></linearGradient>
+              </defs>
+              <circle class="ring r1" cx="160" cy="160" r="150"/>
+              <circle class="ring r2" cx="160" cy="160" r="118"/>
+              <path class="shield-body" d="M160 52l84 30v66c0 56-36 90-84 108-48-18-84-52-84-108V82z" fill="url(#gShield)" fill-opacity=".16" stroke="url(#gShield)" stroke-width="2.5"/>
+              <rect x="136" y="144" width="48" height="40" rx="7" fill="none" stroke="#F5F5F7" stroke-width="3"/>
+              <path d="M144 144v-12a16 16 0 0132 0v12" fill="none" stroke="#F5F5F7" stroke-width="3"/>
+              <circle cx="160" cy="164" r="4.5" fill="#A970FF"/>
+              <circle class="node n1" cx="160" cy="10" r="5"/><circle class="node n2" cx="310" cy="160" r="5"/><circle class="node n3" cx="42" cy="262" r="5"/>
+            </svg>
+          </div>
+          <div class="terminal" role="presentation">
+            <div class="terminal-bar"><i></i><i></i><i></i><span>anny@soc-lab:~</span></div>
+            <pre class="terminal-body" id="terminal"><code></code></pre>
+          </div>
+          <span class="chip chip-blue">Blue Team</span>
+          <span class="chip chip-red">Red Team</span>
+          <span class="chip chip-purple">Purple Team</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== B. SOBRE MÍ ===== -->
+    <section class="section" id="sobre-mi" aria-labelledby="t-about">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">01 · Sobre mí</p>
+          <h2 id="t-about">Aprender haciendo, defender con método</h2>
+        </header>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>Soy Anny Vargas, estudiante de segundo año de Ciberseguridad en la Universidad Tecnológica de Panamá. Me apasiona entender cómo se protegen las redes y los sistemas, y lo practico con proyectos reales: analizo vulnerabilidades con Nessus y OpenVAS, estudio el comportamiento de malware en ANY.RUN y diseño redes en Cisco Packet Tracer.</p>
+            <p>Cursé bachillerato en ciencias y me formé como Técnico en Sistemas Informáticos con Dell Technologies y Glasswing. También he adquirido experiencia en soporte técnico y evaluación de equipos informáticos.</p>
+            <p>Me caracterizo por documentar con rigor, aprender rápido y trabajar con orden. Mi meta es desarrollarme como analista SOC y en gestión de vulnerabilidades, aportando a la defensa de las organizaciones.</p>
+            <dl class="facts">
+              <div><dt>Ubicación</dt><dd>Ciudad de Panamá, Panamá</dd></div>
+              <div><dt>Universidad</dt><dd>Universidad Tecnológica de Panamá (UTP)</dd></div>
+              <div><dt>Objetivo</dt><dd>Analista SOC · Gestión de vulnerabilidades</dd></div>
+            </dl>
+          </div>
+          <div class="reveal">
+            <h3 class="mini-title">Áreas de interés</h3>
+            <ul class="interest-grid">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>Security Operations Center (SOC)</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Blue Team</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-bug"/></svg>Purple Team</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>Análisis de vulnerabilidades</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-bug"/></svg>Análisis de malware</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg>Seguridad de redes</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Gestión de riesgos</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Seguridad de la información</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== C. CERTIFICACIONES ===== -->
+    <section class="section alt" id="certificaciones" aria-labelledby="t-certs">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">02 · Certificaciones e insignias</p>
+          <h2 id="t-certs">Formación certificada</h2>
+          <p class="lead">Mis certificaciones y cursos. Las insignias digitales se verifican en Credly.</p>
+          <a class="btn btn-ghost btn-sm" href="https://www.credly.com/users/anny-vargas.302dcb76/badges/credly" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-award"/></svg> Ver todas mis insignias en Credly
+          </a>
+        </header>
+        <div class="grid cards-3" id="cert-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== D. RECONOCIMIENTOS ===== -->
+    <section class="section" id="reconocimientos" aria-labelledby="t-recs">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">03 · Reconocimientos</p>
+          <h2 id="t-recs">Logros y distinciones</h2>
+          <p class="lead">Reconocimientos académicos, profesionales y tecnológicos.</p>
+        </header>
+        <div class="grid cards-3" id="rec-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== E. ACTIVIDADES ===== -->
+    <section class="section alt" id="actividades" aria-labelledby="t-acts">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">04 · Actividades y participación</p>
+          <h2 id="t-acts">Comunidad y liderazgo</h2>
+          <p class="lead">Participación en comunidades tecnológicas y actividades extracurriculares.</p>
+        </header>
+        <div class="grid cards-3" id="act-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== F. FORMACIÓN ===== -->
+    <section class="section" id="formacion" aria-labelledby="t-edu">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">05 · Formación académica</p>
+          <h2 id="t-edu">Mi ruta de estudios</h2>
+        </header>
+        <ol class="timeline" id="edu-timeline"></ol>
+      </div>
+    </section>
+
+    <!-- ===== G. EXPERIENCIA ===== -->
+    <section class="section alt" id="experiencia" aria-labelledby="t-exp">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">06 · Experiencia profesional</p>
+          <h2 id="t-exp">Experiencia práctica</h2>
+        </header>
+        <div class="grid cards-2" id="exp-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== H. PROYECTOS ===== -->
+    <section class="section" id="proyectos" aria-labelledby="t-proj">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">07 · Proyectos de ciberseguridad</p>
+          <h2 id="t-proj">Laboratorios y proyectos</h2>
+          <p class="lead">Proyectos académicos y de laboratorio en entornos controlados y virtualizados.</p>
+        </header>
+        <div class="grid cards-3" id="proj-grid"></div>
+
+        <div class="gh-block reveal">
+          <div class="gh-head">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repositorios en GitHub</h3>
+            <a class="btn btn-ghost btn-sm" href="https://github.com/Anny-Vargas?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+          </div>
+          <p class="gh-note" id="gh-status" role="status">Cargando repositorios desde GitHub…</p>
+          <div class="grid cards-3" id="gh-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== I. HABILIDADES ===== -->
+    <section class="section alt" id="habilidades" aria-labelledby="t-skills">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">08 · Habilidades técnicas</p>
+          <h2 id="t-skills">Stack y herramientas</h2>
+          <p class="lead">Niveles orientativos: <strong>En formación</strong>, <strong>Básico</strong>, <strong>Intermedio</strong>.</p>
+        </header>
+        <div class="grid cards-2" id="skill-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== J. CONTACTO ===== -->
+    <section class="section" id="contacto" aria-labelledby="t-contact">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">09 · Contacto</p>
+          <h2 id="t-contact">Hablemos</h2>
+          <p class="lead">¿Una oportunidad, una práctica profesional o una colaboración? Escríbeme.</p>
+        </header>
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <h3>Anny Vargas</h3>
+            <p class="muted">Ciudad de Panamá, Panamá</p>
+            <ul class="contact-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp: <a href="https://wa.me/50768669815" target="_blank" rel="noopener noreferrer">+507 6866-9815</a></span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Correo: <a href="mailto:Anny_Vargas_Desiree@outlook.com">Anny_Vargas_Desiree@outlook.com</a></span></li>
+            </ul>
+            <div class="contact-buttons">
+              <a class="btn btn-whatsapp" href="https://wa.me/50768669815" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg> Contactar por WhatsApp</a>
+              <a class="btn btn-primary" href="mailto:Anny_Vargas_Desiree@outlook.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Enviar correo</a>
+              <a class="btn btn-ghost" href="https://www.linkedin.com/in/annyvargas-desiree/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
+              <a class="btn btn-ghost" href="https://github.com/Anny-Vargas" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+              <a class="btn btn-ghost" href="https://www.credly.com/users/anny-vargas.302dcb76/badges/credly" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg> Credly</a>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" id="contact-form" novalidate>
+            <h3>Envíame un mensaje</h3>
+            <label for="f-name">Nombre</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100">
+            <label for="f-email">Correo electrónico</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="150">
+            <label for="f-subject">Asunto</label>
+            <input id="f-subject" name="subject" type="text" required maxlength="150">
+            <label for="f-message">Mensaje</label>
+            <textarea id="f-message" name="message" rows="5" required maxlength="2000"></textarea>
+            <!-- Campo trampa anti-spam: debe quedar vacío -->
+            <div class="hp" aria-hidden="true"><label>No llenar <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Anny Vargas · Ciberseguridad · Ciudad de Panamá</p>
+      <p class="muted mono">Hecho con HTML, CSS y JavaScript · Alojado en GitHub Pages</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="wa-float" href="https://wa.me/50768669815" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+    <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+  </a>
+
+  <!-- Modal de proyecto -->
+  <dialog id="project-modal" class="modal" aria-labelledby="modal-title">
+    <div class="modal-inner" id="modal-body"></div>
+  </dialog>
+
+  <noscript><p class="noscript">Este portafolio necesita JavaScript para mostrar certificaciones, proyectos y habilidades. Puedes ver mis perfiles en <a href="https://www.linkedin.com/in/annyvargas-desiree/">LinkedIn</a> y <a href="https://github.com/Anny-Vargas">GitHub</a>.</p></noscript>
+
+  <script src="data/content.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
