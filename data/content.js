@@ -73,7 +73,7 @@ window.PORTFOLIO = {
       date: 2026,
       type: "traditional",
       badgeImage: "",
-      verifyUrl: null,
+      verifyUrl: "http://portal.inadeh.edu.pa/certificados/validar_certificado?sesion=2714P2260254&usuario=1000287203",
       description: "Formación avanzada en hojas de cálculo para el análisis y la organización de datos."
     },
     {
