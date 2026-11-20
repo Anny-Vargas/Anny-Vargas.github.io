@@ -59,7 +59,7 @@
       var isBadge = c.type === "badge";
       var img = safeImg(c.badgeImage);
       var visual = img
-        ? el("div", { class: "hex hex-img" }, [el("img", { src: img, alt: "Insignia: " + c.name, loading: "lazy", width: "112", height: "112" })])
+        ? el("div", { class: "hexf" }, [el("div", { class: "hexf-in" }, [el("img", { src: img, alt: "Insignia: " + c.name, loading: "lazy", width: "112", height: "112" })])])
         : el("div", { class: "hex", role: "img", "aria-label": "Emblema de certificación" }, [icon(isBadge ? "award" : "shield")]);
       var meta = el("div", { class: "card-meta" }, [
         el("span", { text: c.issuer || "" }),
