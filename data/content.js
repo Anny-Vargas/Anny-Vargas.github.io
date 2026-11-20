@@ -36,7 +36,7 @@ window.PORTFOLIO = {
       issuer: "Google / INADEH",
       date: "2026",
       type: "badge",
-      badgeImage: "assets/img/google-cloud-computing-foundations-certificate.png",
+      badgeImage: "",
       verifyUrl: "https://www.credly.com/badges/2fb6bebd-1456-4200-b0ee-6d4ad56fb9fe/public_url",
       description: "Fundamentos de computación en la nube con Google Cloud: conceptos, servicios principales y modelos de despliegue."
     },
@@ -45,7 +45,7 @@ window.PORTFOLIO = {
       issuer: "Google Cloud",
       date: 2026,
       type: "badge",
-      badgeImage: "assets/img/build-a-secure-google-cloud-network-skill-badge.png",
+      badgeImage: "",
       verifyUrl: "https://www.credly.com/badges/22addfed-2875-4bfa-95c6-1ad651f872ed/public_url",
       description: "Insignia de habilidad de Google Cloud sobre cómo construir y asegurar redes en Google Cloud."
     },
