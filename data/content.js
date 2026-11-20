@@ -35,8 +35,8 @@ window.PORTFOLIO = {
       name: "Google Cloud Computing Foundations Certificate",
       issuer: "Google / INADEH",
       date: "2026",
-      type: "traditional",
-      badgeImage: "google-cloud-computing-foundations-certificate.png",
+      type: "badge",
+      badgeImage: "assets/img/google-cloud-computing-foundations-certificate.png",
       verifyUrl: "https://www.credly.com/badges/2fb6bebd-1456-4200-b0ee-6d4ad56fb9fe/public_url",
       description: "Fundamentos de computación en la nube con Google Cloud: conceptos, servicios principales y modelos de despliegue."
     },
