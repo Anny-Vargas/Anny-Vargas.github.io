@@ -344,3 +344,5 @@ h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.15; margin: 0 0 12p
 .tone-cloud .icon { color: var(--blue); }
 .tone-laptop .icon { color: var(--blue); }
 .tone-lock .icon, .tone-shield .icon, .tone-award .icon { color: var(--neon); }
+.tone-ai .icon { color: #e58bff; }
+.hex-lg .hex-in.tone-ai .icon { width: 52px; height: 52px; stroke-width: 1.3; }
