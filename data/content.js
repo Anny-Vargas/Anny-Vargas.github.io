@@ -36,7 +36,7 @@ window.PORTFOLIO = {
       issuer: "Google / INADEH",
       date: "2026",
       type: "traditional",
-      badgeImage: ""assets/img/badges/google-cloud-secure-network.png"",
+      badgeImage: "assets/img/build-a-secure-google-cloud-network-skill-badge.png",
       verifyUrl: "https://www.credly.com/badges/22addfed-2875-4bfa-95c6-1ad651f872ed/public_url",
       description: "Insignia de habilidad de Google Cloud sobre cómo construir y asegurar redes en Google Cloud."
     },
