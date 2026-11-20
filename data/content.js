@@ -61,10 +61,10 @@ window.PORTFOLIO = {
     {
       name: "Linux Essentials",
       issuer: "Cisco",
-      date: 2026,
+      date: 2025,
       type: "traditional",
       badgeImage: "",
-      verifyUrl: null,
+      verifyUrl: "https://www.credly.com/badges/cfe503d1-c397-4be6-a25d-803716a5c54c/public_url",
       description: "Fundamentos del sistema operativo Linux: línea de comandos, archivos, permisos y administración básica."
     },
     {
@@ -88,12 +88,22 @@ window.PORTFOLIO = {
     {
       name: "Técnico en Sistemas Informáticos",
       issuer: "Dell Technologies / Glasswing",
-      date: "2025",
+      date: 2025,
       type: "traditional",
       badgeImage: "",
       verifyUrl: null,
       description: "Formación técnica en hardware, software, sistemas operativos, redes y soporte técnico."
-    }
+    },
+     {
+      name: "Introduction to Data Science",
+      issuer: "Cisco",
+      date: 2026,
+      type: "badge",
+      badgeImage: "",
+      symbol: "chart",
+      verifyUrl: "https://www.credly.com/badges/427b53bc-53ab-4f70-9de2-494ce611a501/public_url",
+      description: "Formación introductoria en ciencia de datos que abarca análisis de datos, ingeniería de datos y conceptos básicos de machine learning para la toma de decisiones basada en datos."
+    },
   ],
 
   /* ---------- Reconocimientos ----------
