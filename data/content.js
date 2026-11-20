@@ -104,6 +104,15 @@ window.PORTFOLIO = {
       verifyUrl: "https://www.credly.com/badges/427b53bc-53ab-4f70-9de2-494ce611a501/public_url",
       description: "Formación introductoria en ciencia de datos que abarca análisis de datos, ingeniería de datos y conceptos básicos de machine learning para la toma de decisiones basada en datos."
     },
+      {
+      name: "Introduction to Modern AI",
+      issuer: "Cisco",
+      date: "2026",
+      type: "badge",
+      badgeImage: "",
+      verifyUrl: "https://www.credly.com/badges/5ac662ac-9f7d-4e3d-9896-08ca88d0549d/public_url",
+      description: "Curso de Cisco Networking Academy sobre IA moderna: uso de funciones con IA en aplicaciones, práctica de prompting con chatbots y fundamentos de cómo funcionan los modelos."
+    },
   ],
 
   /* ---------- Reconocimientos ----------
