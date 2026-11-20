@@ -36,6 +36,15 @@ window.PORTFOLIO = {
       issuer: "Google / INADEH",
       date: "2026",
       type: "traditional",
+      badgeImage: "",
+      verifyUrl: null,
+      description: "Fundamentos de computación en la nube con Google Cloud: conceptos, servicios principales y modelos de despliegue."
+    },
+    {
+      name: "Build a Secure Google Cloud Network Skill Badge",
+      issuer: "Google Cloud",
+      date: null,
+      type: "badge",
       badgeImage: "assets/img/build-a-secure-google-cloud-network-skill-badge.png",
       verifyUrl: "https://www.credly.com/badges/22addfed-2875-4bfa-95c6-1ad651f872ed/public_url",
       description: "Insignia de habilidad de Google Cloud sobre cómo construir y asegurar redes en Google Cloud."
@@ -292,9 +301,9 @@ window.PORTFOLIO = {
       icon: "shield",
       items: [
         { name: "Análisis de vulnerabilidades", level: 2 },
-        { name: "Fundamentos de SOC", level: 0 },
-        { name: "Análisis de malware", level: 1 },
-        { name: "Monitoreo de eventos", level: 1 },
+        { name: "Fundamentos de SOC", level: 3 },
+        { name: "Análisis de malware", level: 2 },
+        { name: "Monitoreo de eventos", level: 2 },
         { name: "Fundamentos de seguridad informática", level: 2 }
       ]
     },
@@ -304,10 +313,10 @@ window.PORTFOLIO = {
       items: [
         { name: "Nessus", level: 2 },
         { name: "OpenVAS", level: 2 },
-        { name: "ANY.RUN", level: 1 },
+        { name: "ANY.RUN", level: 2 },
         { name: "Wazuh", level: 1 },
-        { name: "Kali Linux", level: 2 },
-        { name: "Debian", level: 1 },
+        { name: "Kali Linux", level: 3 },
+        { name: "Debian", level: 3 },
         { name: "Cisco Packet Tracer", level: 2 }
       ]
     },
@@ -318,8 +327,8 @@ window.PORTFOLIO = {
         { name: "Windows", level: 2 },
         { name: "Linux", level: 2 },
         { name: "TCP/IP", level: 2 },
-        { name: "DNS", level: 1 },
-        { name: "DHCP", level: 1 },
+        { name: "DNS", level: 2 },
+        { name: "DHCP", level: 2 },
         { name: "VLAN", level: 2 },
         { name: "Routers y switches", level: 2 }
       ]
@@ -328,11 +337,11 @@ window.PORTFOLIO = {
       category: "Programación y análisis",
       icon: "chart",
       items: [
-        { name: "Python", level: 0 },
-        { name: "SQL", level: 0 },
+        { name: "Python", level: 3 },
+        { name: "SQL", level: 2},
         { name: "Excel avanzado", level: 2 },
-        { name: "Power BI", level: 1 },
-        { name: "Bases de datos", level: 0 }
+        { name: "Power BI", level: 2 },
+        { name: "Bases de datos", level: 2 }
       ]
     }
   ]
