@@ -36,9 +36,9 @@ window.PORTFOLIO = {
       issuer: "Google / INADEH",
       date: "2026",
       type: "traditional",
-      badgeImage: "",
-      verifyUrl: null,
-      description: "Fundamentos de computación en la nube con Google Cloud: conceptos, servicios principales y modelos de despliegue."
+      badgeImage: ""assets/img/badges/google-cloud-secure-network.png"",
+      verifyUrl: "https://www.credly.com/badges/22addfed-2875-4bfa-95c6-1ad651f872ed/public_url",
+      description: "Insignia de habilidad de Google Cloud sobre cómo construir y asegurar redes en Google Cloud."
     },
     {
       name: "Introduction to Cybersecurity",
