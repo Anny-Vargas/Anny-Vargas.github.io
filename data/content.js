@@ -36,14 +36,14 @@ window.PORTFOLIO = {
       issuer: "Google / INADEH",
       date: "2026",
       type: "traditional",
-      badgeImage: "",
-      verifyUrl: null,
+      badgeImage: "google-cloud-computing-foundations-certificate.png",
+      verifyUrl: "https://www.credly.com/badges/2fb6bebd-1456-4200-b0ee-6d4ad56fb9fe/public_url",
       description: "Fundamentos de computación en la nube con Google Cloud: conceptos, servicios principales y modelos de despliegue."
     },
     {
       name: "Build a Secure Google Cloud Network Skill Badge",
       issuer: "Google Cloud",
-      date: null,
+      date: 2026,
       type: "badge",
       badgeImage: "assets/img/build-a-secure-google-cloud-network-skill-badge.png",
       verifyUrl: "https://www.credly.com/badges/22addfed-2875-4bfa-95c6-1ad651f872ed/public_url",
@@ -52,7 +52,7 @@ window.PORTFOLIO = {
     {
       name: "Introduction to Cybersecurity",
       issuer: "Cisco",
-      date: null,
+      date: 2026,
       type: "traditional",
       badgeImage: "",
       verifyUrl: null,
@@ -61,7 +61,7 @@ window.PORTFOLIO = {
     {
       name: "Linux Essentials",
       issuer: "Cisco",
-      date: null,
+      date: 2026,
       type: "traditional",
       badgeImage: "",
       verifyUrl: null,
@@ -70,7 +70,7 @@ window.PORTFOLIO = {
     {
       name: "Excel Avanzado",
       issuer: "INADEH",
-      date: null,
+      date: 2026,
       type: "traditional",
       badgeImage: "",
       verifyUrl: null,
@@ -79,7 +79,7 @@ window.PORTFOLIO = {
     {
       name: "Power BI",
       issuer: "Formación complementaria",
-      date: null,
+      date: 2026,
       type: "traditional",
       badgeImage: "",
       verifyUrl: null,
