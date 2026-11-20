@@ -78,11 +78,11 @@ window.PORTFOLIO = {
     },
     {
       name: "Power BI",
-      issuer: "Formación complementaria",
+      issuer: "INADEH",
       date: 2026,
       type: "traditional",
       badgeImage: "",
-      verifyUrl: null,
+      verifyUrl: "https://portal.inadeh.edu.pa/certificados/validar_certificado?sesion=2714P2260258&usuario=1000287203",
       description: "Formación complementaria en visualización y análisis de datos con Power BI."
     },
     {
