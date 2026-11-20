@@ -52,6 +52,44 @@
     return addCard(card("empty"), [icon("plus"), el("h3", { text: title }), el("p", { text: text })]);
   }
 
+  /* Símbolos adicionales (genéricos, no son logos de marcas). Se agregan al sprite al iniciar. */
+  var EXTRA = {
+    sheet: ["M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z", "M3 10h18M3 15h18M9 4v16"],
+    cloud: ["M7 18h10a4 4 0 00.6-7.95A5.5 5.5 0 007 9.2 4.4 4.4 0 007 18z"],
+    laptop: ["M6 5h12a1.5 1.5 0 011.5 1.5V15h-15V6.5A1.5 1.5 0 016 5z", "M2.5 19h19M10 17h4"]
+  };
+  (function addSprite() {
+    var svg = document.createElementNS(SVGNS, "svg");
+    svg.setAttribute("class", "sprite"); svg.setAttribute("aria-hidden", "true");
+    Object.keys(EXTRA).forEach(function (k) {
+      var sym = document.createElementNS(SVGNS, "symbol");
+      sym.setAttribute("id", "i-" + k); sym.setAttribute("viewBox", "0 0 24 24");
+      EXTRA[k].forEach(function (d) { var pth = document.createElementNS(SVGNS, "path"); pth.setAttribute("d", d); sym.appendChild(pth); });
+      svg.appendChild(sym);
+    });
+    document.body.appendChild(svg);
+  })();
+
+  /* Símbolo del emblema: usa "symbol" si existe en el dato; si no, lo deduce del nombre. */
+  function pickSymbol(c) {
+    if (c.symbol) return String(c.symbol);
+    var n = String(c.name || "").toLowerCase();
+    if (/excel|hoja de c[aá]lculo/.test(n)) return "sheet";
+    if (/power ?bi|datos|analytics/.test(n)) return "chart";
+    if (/linux/.test(n)) return "terminal";
+    if (/cyber|ciberseg/.test(n)) return "lock";
+    if (/cloud|nube/.test(n)) return "cloud";
+    if (/sistemas inform|hardware|soporte/.test(n)) return "laptop";
+    return c.type === "badge" ? "award" : "shield";
+  }
+
+  /* Texto corto del emblema: usa "badgeLabel" si existe; si no, la institución (si es corta). */
+  function emblemLabel(c) {
+    if (c.badgeLabel) return String(c.badgeLabel).toUpperCase();
+    var t = String(c.issuer || "").split("/")[0].trim().toUpperCase();
+    return t && t.length <= 20 && t.indexOf("FORMACI") !== 0 ? t : "";
+  }
+
   /* ---------- Certificaciones ---------- */
   function renderCerts() {
     var list = D.certifications || [];
@@ -59,8 +97,10 @@
       var isBadge = c.type === "badge";
       var img = safeImg(c.badgeImage);
       var visual = img
-        ? el("div", { class: "hexf" }, [el("div", { class: "hexf-in" }, [el("img", { src: img, alt: "Insignia: " + c.name, loading: "lazy", width: "112", height: "112" })])])
-        : el("div", { class: "hex", role: "img", "aria-label": "Emblema de certificación" }, [icon(isBadge ? "award" : "shield")]);
+        ? el("img", { class: "badge-pic", src: img, alt: "Insignia: " + c.name, loading: "lazy" })
+        : el("div", { class: "hex hex-lg", role: "img", "aria-label": "Emblema de certificación" }, [
+            el("div", { class: "hex-in tone-" + pickSymbol(c) }, [icon(pickSymbol(c)), emblemLabel(c) ? el("span", { class: "hex-label", text: emblemLabel(c) }) : null])
+          ]);
       var meta = el("div", { class: "card-meta" }, [
         el("span", { text: c.issuer || "" }),
         c.date ? el("span", { text: c.date }) : null
