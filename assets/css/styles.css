@@ -355,3 +355,11 @@ h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.15; margin: 0 0 12p
 .tone-devpc .icon { color: #3ddc97; }
 .card-icon .icon { width: 1.4em; height: 1.4em; }
 .hex-lg .hex-in.tone-hacker .icon { width: 50px; height: 50px; stroke-width: 1.4; }
+
+/* ---------- Selector de idioma ES / EN ---------- */
+.lang-toggle { display: inline-flex; align-items: center; padding: 3px; gap: 2px; background: rgba(36, 36, 43, .7); border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-family: var(--mono); font-size: .76rem; font-weight: 700; color: var(--silver); transition: border-color .2s; }
+.lang-toggle:hover { border-color: var(--neon); }
+.lang-toggle:focus-visible { outline: 2px solid var(--neon); outline-offset: 2px; }
+.lang-opt { padding: 5px 10px; border-radius: 999px; line-height: 1; transition: background .2s, color .2s; }
+.lang-opt.on { background: var(--purple); color: var(--text); }
+@media (max-width: 1180px) { .lang-toggle { align-self: flex-start; } }
