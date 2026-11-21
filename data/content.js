@@ -125,7 +125,28 @@ window.PORTFOLIO = {
        image: "assets/img/recognitions/mi-reconocimiento.jpg"   // opcional
      }
      (Mientras la lista esté vacía, el sitio muestra una tarjeta "Próximamente".) */
-  recognitions: [],
+  recognitions: [
+   {
+      name: "Bootcamp Analista SOC Nivel 2: de los fundamentos a la operación y respuesta",
+      issuer: "Comunidad DOJO · Women of Security Panamá",
+      year: "2026",
+      description: "Certificado de reconocimiento por asistencia, participación y aprovechamiento del programa. Panamá, 3 al 24 de octubre de 2026 · 24 horas.",
+      image: "assets/img/recognitions/bootcamp-analista-soc-nivel-2.jpg",
+      showImage: false,
+      symbol: "hacker",
+      badgeLabel: "Dojo"
+    },
+    {
+      name: "Bootcamp Fundamentos de Ciberseguridad 2026",
+      issuer: "Fundación Comunidad DOJO · Women of Security Panamá",
+      year: "2026",
+      description: "Certificado por asistencia, participación y aprovechamiento del programa. Panamá, 7 al 28 de marzo de 2026 · 22 horas.",
+      image: "assets/img/recognitions/bootcamp-fundamentos-ciberseguridad.jpg",
+      showImage: false,
+      symbol: "devpc",
+      badgeLabel: "Dojo"
+    }
+  ],  
 
   /* ---------- Actividades y participación ---------- */
   activities: [
