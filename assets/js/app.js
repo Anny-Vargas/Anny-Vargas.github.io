@@ -9,6 +9,9 @@
   var D = window.PORTFOLIO || {};
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  /* Idioma (assets/js/i18n.js). Si ese archivo no carga, todo sigue en español. */
+  var I = window.I18N || { lang: "es", t: function (k) { return k; }, tr: function (x) { return x; }, pick: function (o, f) { return o[f]; }, onChange: function () {} };
+  var P = function (o, f) { return I.pick(o, f); };
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var SVGNS = "http://www.w3.org/2000/svg";
 
@@ -110,24 +113,24 @@
       var isBadge = c.type === "badge";
       var img = safeImg(c.badgeImage);
       var visual = img
-        ? el("img", { class: "badge-pic", src: img, alt: "Insignia: " + c.name, loading: "lazy" })
+        ? el("img", { class: "badge-pic", src: img, alt: I.t("ui.badgeAlt") + ": " + P(c, "name"), loading: "lazy" })
         : emblem(c);
       var meta = el("div", { class: "card-meta" }, [
-        el("span", { text: c.issuer || "" }),
+        el("span", { text: P(c, "issuer") || "" }),
         c.date ? el("span", { text: c.date }) : null
       ]);
       var top = el("div", { class: "card-top" }, [
-        el("span", { class: "tag" + (isBadge ? " neon" : ""), text: isBadge ? "Insignia digital" : "Certificación" })
+        el("span", { class: "tag" + (isBadge ? " neon" : ""), text: isBadge ? I.t("ui.badge") : I.t("ui.cert") })
       ]);
       var verify = safeUrl(c.verifyUrl)
-        ? extLink(c.verifyUrl, "Verificar", "btn btn-primary btn-sm", "check")
-        : el("span", { class: "verify-off", text: "Verificación aún no enlazada" });
+        ? extLink(c.verifyUrl, I.t("ui.verify"), "btn btn-primary btn-sm", "check")
+        : el("span", { class: "verify-off", text: I.t("ui.noverify") });
       return addCard(card(), [
         top,
         el("div", { class: "badge-wrap" }, [visual]),
-        el("h3", { text: c.name }),
+        el("h3", { text: P(c, "name") }),
         meta,
-        c.description ? el("p", { text: c.description }) : null,
+        c.description ? el("p", { text: P(c, "description") }) : null,
         el("div", { class: "card-actions" }, [verify])
       ]);
     });
@@ -140,27 +143,27 @@
   function renderRecs() {
     var list = D.recognitions || [];
     if (!list.length) {
-      mount("rec-grid", [emptyCard("Próximamente", "Aquí aparecerán mis reconocimientos académicos, profesionales y tecnológicos.")]);
+      mount("rec-grid", [emptyCard(I.t("ui.soon"), I.t("ui.recsEmpty"))]);
       return;
     }
     mount("rec-grid", list.map(function (r) {
       var img = safeImg(r.image), logo = safeImg(r.logo), preview;
       if (img && r.showImage !== false) {
-        preview = el("a", { href: img, target: "_blank", rel: "noopener", class: "cert-link", "aria-label": "Ver certificado completo: " + r.name },
-          [el("img", { class: "card-photo cert-photo", src: img, alt: "Evidencia: " + r.name, loading: "lazy" })]);
+        preview = el("a", { href: img, target: "_blank", rel: "noopener", class: "cert-link", "aria-label": I.t("ui.fullcert") + ": " + P(r, "name") },
+          [el("img", { class: "card-photo cert-photo", src: img, alt: I.t("ui.evidence") + ": " + P(r, "name"), loading: "lazy" })]);
       } else if (logo) {
-        preview = el("div", { class: "badge-wrap" }, [el("img", { class: "badge-pic", src: logo, alt: "Logo: " + (r.issuer || r.name), loading: "lazy" })]);
+        preview = el("div", { class: "badge-wrap" }, [el("img", { class: "badge-pic", src: logo, alt: I.t("ui.logo") + ": " + (P(r, "issuer") || P(r, "name")), loading: "lazy" })]);
       } else {
         preview = el("div", { class: "badge-wrap" }, [emblem({ name: r.name, issuer: r.issuer, symbol: r.symbol, badgeLabel: r.badgeLabel, type: "traditional" })]);
       }
       var actions = [];
-      if (safeUrl(r.verifyUrl)) actions.push(extLink(r.verifyUrl, "Verificar", "btn btn-primary btn-sm", "check"));
-      if (img && r.showImage === false) actions.push(el("a", { href: img, target: "_blank", rel: "noopener", class: "btn btn-primary btn-sm" }, [icon("external"), document.createTextNode("Ver certificado")]));
+      if (safeUrl(r.verifyUrl)) actions.push(extLink(r.verifyUrl, I.t("ui.verify"), "btn btn-primary btn-sm", "check"));
+      if (img && r.showImage === false) actions.push(el("a", { href: img, target: "_blank", rel: "noopener", class: "btn btn-primary btn-sm" }, [icon("external"), document.createTextNode(I.t("ui.viewcert"))]));
       return addCard(card(), [
         preview,
-        el("h3", { text: r.name }),
-        el("div", { class: "card-meta" }, [el("span", { text: r.issuer || "" }), r.year ? el("span", { text: String(r.year) }) : null]),
-        r.description ? el("p", { text: r.description }) : null,
+        el("h3", { text: P(r, "name") }),
+        el("div", { class: "card-meta" }, [el("span", { text: P(r, "issuer") || "" }), r.year ? el("span", { text: String(r.year) }) : null]),
+        r.description ? el("p", { text: P(r, "description") }) : null,
         actions.length ? el("div", { class: "card-actions" }, actions) : null
       ]);
     }));
@@ -172,14 +175,14 @@
       var img = safeImg(a.image);
       var head = el("div", { class: "card-top" }, [
         el("div", { class: "card-icon" }, [icon(a.icon || "users")]),
-        a.role ? el("span", { class: "tag neon", text: a.role }) : null
+        a.role ? el("span", { class: "tag neon", text: P(a, "role") }) : null
       ]);
       return addCard(card(a.featured ? "featured" : ""), [
         head,
-        el("h3", { text: a.name }),
+        el("h3", { text: P(a, "name") }),
         a.period ? el("div", { class: "card-meta" }, [el("span", { text: String(a.period) })]) : null,
-        a.description ? el("p", { text: a.description }) : null,
-        img ? el("img", { class: "card-photo", src: img, alt: "Evidencia: " + a.name, loading: "lazy" }) : null
+        a.description ? el("p", { text: P(a, "description") }) : null,
+        img ? el("img", { class: "card-photo", src: img, alt: I.t("ui.evidence") + ": " + P(a, "name"), loading: "lazy" }) : null
       ]);
     }));
   }
@@ -190,16 +193,16 @@
     if (!ol) return;
     clear(ol);
     (D.education || []).forEach(function (e) {
-      var inst = e.institution ? el("span", { text: e.institution }) : el("span", { class: "todo", text: "Institución por agregar" });
-      var per = e.period ? el("span", { text: e.period }) : el("span", { class: "todo", text: "Año de graduación por agregar" });
+      var inst = e.institution ? el("span", { text: P(e, "institution") }) : el("span", { class: "todo", text: I.t("ui.todoInst") });
+      var per = e.period ? el("span", { text: e.period }) : el("span", { class: "todo", text: I.t("ui.todoYear") });
       var li = el("li", { class: "tl-item reveal" + (e.current ? " current" : "") });
       addCard(li, [addCard(el("div", { class: "card" }), [
         el("div", { class: "card-top" }, [
-          el("h3", { text: e.title }),
-          e.status ? el("span", { class: "tag neon", text: e.status }) : null
+          el("h3", { text: P(e, "title") }),
+          e.status ? el("span", { class: "tag neon", text: P(e, "status") }) : null
         ]),
         el("div", { class: "card-meta" }, [inst, per]),
-        e.description ? el("p", { text: e.description }) : null
+        e.description ? el("p", { text: P(e, "description") }) : null
       ])]);
       ol.appendChild(li);
     });
@@ -208,16 +211,16 @@
   /* ---------- Experiencia ---------- */
   function renderExp() {
     var nodes = (D.experience || []).map(function (x) {
-      var ul = el("ul", { class: "task-list" }, (x.tasks || []).map(function (t) { return el("li", {}, [icon("check"), el("span", { text: t })]); }));
+      var ul = el("ul", { class: "task-list" }, (P(x, "tasks") || []).map(function (t) { return el("li", {}, [icon("check"), el("span", { text: t })]); }));
       return addCard(card(), [
-        el("div", { class: "card-top" }, [el("div", { class: "card-icon" }, [icon("briefcase")]), x.type ? el("span", { class: "tag neon", text: x.type }) : null]),
-        el("h3", { text: x.title }),
-        el("div", { class: "card-meta" }, [el("span", { text: x.company || "" }), x.period ? el("span", { text: x.period }) : null]),
+        el("div", { class: "card-top" }, [el("div", { class: "card-icon" }, [icon("briefcase")]), x.type ? el("span", { class: "tag neon", text: P(x, "type") }) : null]),
+        el("h3", { text: P(x, "title") }),
+        el("div", { class: "card-meta" }, [el("span", { text: P(x, "company") || "" }), x.period ? el("span", { text: x.period }) : null]),
         ul,
-        x.highlight ? el("p", { class: "highlight", text: x.highlight }) : null
+        x.highlight ? el("p", { class: "highlight", text: P(x, "highlight") }) : null
       ]);
     });
-    if (D.showExperiencePlaceholder) nodes.push(emptyCard("Próximas experiencias", "Espacio reservado para futuras experiencias laborales y prácticas profesionales."));
+    if (D.showExperiencePlaceholder) nodes.push(emptyCard(I.t("ui.nextExp"), I.t("ui.nextExpText")));
     mount("exp-grid", nodes);
   }
 
@@ -228,20 +231,20 @@
   function openProject(p) {
     var body = document.getElementById("modal-body");
     clear(body);
-    var close = el("button", { class: "modal-close", type: "button", "aria-label": "Cerrar" }, [icon("close")]);
+    var close = el("button", { class: "modal-close", type: "button", "aria-label": I.t("ui.close") }, [icon("close")]);
     close.addEventListener("click", function () { modal.close(); });
     var img = safeImg(p.image);
     body.appendChild(close);
-    body.appendChild(img ? el("img", { class: "card-photo", src: img, alt: "Captura de " + p.name }) : el("div", { class: "proj-cover" }, [icon(p.icon || "shield")]));
-    body.appendChild(el("h3", { id: "modal-title", text: p.name }));
-    body.appendChild(el("p", { text: p.description }));
-    if (p.objective) { body.appendChild(el("div", {}, [el("h4", { text: "// OBJETIVO" }), el("p", { text: p.objective })])); }
+    body.appendChild(img ? el("img", { class: "card-photo", src: img, alt: I.t("ui.shot") + " " + P(p, "name") }) : el("div", { class: "proj-cover" }, [icon(p.icon || "shield")]));
+    body.appendChild(el("h3", { id: "modal-title", text: P(p, "name") }));
+    body.appendChild(el("p", { text: P(p, "description") }));
+    if (p.objective) { body.appendChild(el("div", {}, [el("h4", { text: I.t("ui.objective") }), el("p", { text: P(p, "objective") })])); }
     if (p.learnings && p.learnings.length) {
-      body.appendChild(el("div", {}, [el("h4", { text: "// RESULTADOS Y APRENDIZAJES" }),
-        el("ul", { class: "task-list" }, p.learnings.map(function (l) { return el("li", {}, [icon("check"), el("span", { text: l })]); }))]));
+      body.appendChild(el("div", {}, [el("h4", { text: I.t("ui.results") }),
+        el("ul", { class: "task-list" }, P(p, "learnings").map(function (l) { return el("li", {}, [icon("check"), el("span", { text: l })]); }))]));
     }
-    body.appendChild(el("div", {}, [el("h4", { text: "// TECNOLOGÍAS" }), el("div", { class: "tags" }, (p.tech || []).map(function (t) { return el("span", { class: "tag neon", text: t }); }))]));
-    if (safeUrl(p.github)) body.appendChild(el("div", { class: "card-actions" }, [extLink(p.github, "Ver en GitHub", "btn btn-primary btn-sm", "github")]));
+    body.appendChild(el("div", {}, [el("h4", { text: I.t("ui.tech") }), el("div", { class: "tags" }, (P(p, "tech") || []).map(function (t) { return el("span", { class: "tag neon", text: t }); }))]));
+    if (safeUrl(p.github)) body.appendChild(el("div", { class: "card-actions" }, [extLink(p.github, I.t("ui.viewGithub"), "btn btn-primary btn-sm", "github")]));
     lastFocus = document.activeElement;
     if (typeof modal.showModal === "function") modal.showModal(); else modal.setAttribute("open", "");
     close.focus();
@@ -255,15 +258,15 @@
     var list = D.projects || [];
     var nodes = list.map(function (p) {
       var img = safeImg(p.image);
-      var cover = el("div", { class: "proj-cover", role: "img", "aria-label": "Ilustración del proyecto" }, [img ? el("img", { src: img, alt: "", loading: "lazy" }) : icon(p.icon || "shield")]);
-      var more = el("button", { class: "btn btn-primary btn-sm", type: "button" }, [document.createTextNode("Ver más detalles")]);
+      var cover = el("div", { class: "proj-cover", role: "img", "aria-label": I.t("ui.projArt") }, [img ? el("img", { src: img, alt: "", loading: "lazy" }) : icon(p.icon || "shield")]);
+      var more = el("button", { class: "btn btn-primary btn-sm", type: "button" }, [document.createTextNode(I.t("ui.more"))]);
       more.addEventListener("click", function () { openProject(p); });
       var actions = el("div", { class: "card-actions" }, [more, safeUrl(p.github) ? extLink(p.github, "GitHub", "btn btn-ghost btn-sm", "github") : null]);
       return addCard(card(), [
         cover,
-        el("h3", { text: p.name }),
-        el("p", { text: p.description }),
-        el("div", { class: "tags" }, (p.tech || []).slice(0, 4).map(function (t) { return el("span", { class: "tag", text: t }); })),
+        el("h3", { text: P(p, "name") }),
+        el("p", { text: P(p, "description") }),
+        el("div", { class: "tags" }, (P(p, "tech") || []).slice(0, 4).map(function (t) { return el("span", { class: "tag", text: t }); })),
         actions
       ]);
     });
@@ -271,20 +274,25 @@
   }
 
   /* ---------- Repos de GitHub (API pública) ---------- */
+  var ghState = "loading", ghRepos = [];
   function renderRepos(repos) {
+    if (repos) { ghRepos = repos; ghState = repos.length ? "ok" : "none"; }
     var status = document.getElementById("gh-status");
-    if (!repos.length) { status.textContent = "Aún no hay repositorios públicos para mostrar. Cuando publiques proyectos en GitHub aparecerán aquí automáticamente."; mount("gh-grid", []); return; }
-    status.textContent = "Se actualiza automáticamente desde mi cuenta de GitHub (@" + (D.links.githubUser) + ").";
-    mount("gh-grid", repos.map(function (r) {
+    var repos2 = ghRepos;
+    if (ghState === "loading") { status.textContent = I.t("ui.ghLoading"); return; }
+    if (ghState === "err") { status.textContent = I.t("ui.ghErr"); mount("gh-grid", []); return; }
+    if (ghState === "none") { status.textContent = I.t("ui.ghNone"); mount("gh-grid", []); return; }
+    status.textContent = I.t("ui.ghOk").replace("%s", D.links.githubUser);
+    mount("gh-grid", repos2.map(function (r) {
       return addCard(card(), [
         el("div", { class: "card-top" }, [el("div", { class: "card-icon" }, [icon("github")]), r.language ? el("span", { class: "tag neon", text: r.language }) : null]),
         el("h3", { text: r.name }),
-        el("p", { text: r.description || "Repositorio sin descripción todavía." }),
+        el("p", { text: r.description || I.t("ui.noDesc") }),
         el("div", { class: "repo-stats" }, [
           el("span", {}, [icon("star"), document.createTextNode(String(r.stargazers_count || 0))]),
           el("span", {}, [icon("fork"), document.createTextNode(String(r.forks_count || 0))])
         ]),
-        el("div", { class: "card-actions" }, [extLink(r.html_url, "Visitar proyecto", "btn btn-ghost btn-sm", "external")])
+        el("div", { class: "card-actions" }, [extLink(r.html_url, I.t("ui.visit"), "btn btn-ghost btn-sm", "external")])
       ]);
     }));
     observeReveal();
@@ -305,20 +313,19 @@
         renderRepos(repos);
       })
       .catch(function () {
-        status.textContent = "No pude cargar los repositorios en este momento. Puedes verlos directamente en mi perfil de GitHub.";
-        mount("gh-grid", []);
+        ghState = "err"; renderRepos();
       });
   }
 
   /* ---------- Habilidades ---------- */
-  var LEVELS = { 0: "En formación", 1: "Básico", 2: "Intermedio", 3: "Avanzado" };
+  function levelName(n) { return I.t("ui.lv" + n); }
   function renderSkills() {
     mount("skill-grid", (D.skills || []).map(function (g) {
       var ul = el("ul", { class: "skill-list" }, g.items.map(function (s) {
         var dots = el("span", { class: "dots", "aria-hidden": "true" }, [1, 2, 3].map(function (i) { return el("i", { class: i <= s.level ? "on" : "" }); }));
-        return el("li", {}, [el("span", { text: s.name }), el("span", { class: "skill-level" }, [dots, el("span", { text: LEVELS[s.level] || "" })])]);
+        return el("li", {}, [el("span", { text: P(s, "name") }), el("span", { class: "skill-level" }, [dots, el("span", { text: levelName(s.level) })])]);
       }));
-      return addCard(card("skill-card"), [el("h3", {}, [icon(g.icon || "shield"), document.createTextNode(g.category)]), ul]);
+      return addCard(card("skill-card"), [el("h3", {}, [icon(g.icon || "shield"), document.createTextNode(P(g, "category"))]), ul]);
     }));
   }
 
@@ -348,7 +355,7 @@
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      toggle.setAttribute("aria-label", open ? I.t("ui.menuClose") : I.t("ui.menuOpen"));
     });
     $$("a", nav).forEach(function (a) { a.addEventListener("click", function () { nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); }); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") { nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); } });
@@ -376,7 +383,7 @@
       [["p", "anny@soc-lab:~$ "], [null, "whoami"]],
       [["ok", "anny_vargas — cybersecurity student @ UTP"]],
       [["p", "anny@soc-lab:~$ "], [null, "cat focus.txt"]],
-      [["w", "> SOC · Blue Team · Vulnerability Mgmt"]],
+      [["w", "> SOC · Ethical Hacking · Forensics · Audit"]],
       [["p", "anny@soc-lab:~$ "], [null, "status --lab"]],
       [["ok", "[✓] Wazuh   [✓] Nessus   [✓] OpenVAS"]]
     ];
@@ -417,26 +424,36 @@
         inp.setAttribute("aria-invalid", bad ? "true" : "false");
         if (bad) ok = false;
       });
-      if (!ok) { status.className = "form-status err"; status.textContent = "Revisa los campos marcados: todos son obligatorios y el correo debe ser válido."; return; }
+      if (!ok) { status.className = "form-status err"; status.textContent = I.t("ui.formBad"); return; }
 
       var name = f.get("name").trim(), email = f.get("email").trim(), subject = f.get("subject").trim(), msg = f.get("message").trim();
       var endpoint = D.formEndpoint;
       if (endpoint && /^https:\/\/formspree\.io\//.test(endpoint)) {
         var btn = form.querySelector("button[type=submit]"); btn.disabled = true;
         fetch(endpoint, { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ name: name, email: email, subject: subject, message: msg }) })
-          .then(function (r) { if (!r.ok) throw new Error(); form.reset(); status.className = "form-status ok"; status.textContent = "¡Mensaje enviado! Te responderé pronto."; })
-          .catch(function () { status.className = "form-status err"; status.textContent = "No se pudo enviar. Escríbeme por WhatsApp o por correo."; })
+          .then(function (r) { if (!r.ok) throw new Error(); form.reset(); status.className = "form-status ok"; status.textContent = I.t("ui.formOk"); })
+          .catch(function () { status.className = "form-status err"; status.textContent = I.t("ui.formFail"); })
           .then(function () { btn.disabled = false; });
       } else {
-        var body = "Hola Anny,\n\n" + msg + "\n\n— " + name + " (" + email + ")";
+        var body = I.t("ui.mailHi") + "\n\n" + msg + "\n\n— " + name + " (" + email + ")";
         window.location.href = "mailto:" + D.links.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        status.className = "form-status ok"; status.textContent = "Se abrió tu aplicación de correo con el mensaje listo para enviar.";
+        status.className = "form-status ok"; status.textContent = I.t("ui.formMail");
       }
     });
   }
 
   /* ---------- Inicio ---------- */
-  renderCerts(); renderRecs(); renderActs(); renderEdu(); renderExp(); renderProjects(); renderSkills();
+  function renderAll() { renderCerts(); renderRecs(); renderActs(); renderEdu(); renderExp(); renderProjects(); renderSkills(); }
+  renderAll(); renderRepos();
   setupNav(); setupTerminal(); setupForm(); observeReveal(); loadRepos();
+  /* Al cambiar de idioma se vuelven a dibujar las tarjetas */
+  I.onChange(function () {
+    if (modal && modal.open) modal.close();
+    var st = document.getElementById("form-status"); if (st) { st.textContent = ""; st.className = "form-status"; }
+    renderAll();
+    if (ghState !== "loading") renderRepos(); else { var g = document.getElementById("gh-status"); if (g) g.textContent = I.t("ui.ghLoading"); }
+    var tg = $(".nav-toggle"); if (tg) tg.setAttribute("aria-label", I.t($("#nav").classList.contains("open") ? "ui.menuClose" : "ui.menuOpen"));
+    observeReveal();
+  });
   var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
 })();
