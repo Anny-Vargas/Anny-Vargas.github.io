@@ -346,3 +346,12 @@ h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.15; margin: 0 0 12p
 .tone-lock .icon, .tone-shield .icon, .tone-award .icon { color: var(--neon); }
 .tone-ai .icon { color: #e58bff; }
 .hex-lg .hex-in.tone-ai .icon { width: 52px; height: 52px; stroke-width: 1.3; }
+
+/* Reconocimientos: certificado completo, sin recortar */
+.cert-link { display: block; border-radius: 10px; overflow: hidden; }
+.card-photo.cert-photo { aspect-ratio: 1.41 / 1; object-fit: contain; background: #fff; transition: transform .4s; }
+.cert-link:hover .cert-photo { transform: scale(1.03); }
+.tone-hacker .icon { color: var(--red); }
+.tone-devpc .icon { color: #3ddc97; }
+.card-icon .icon { width: 1.4em; height: 1.4em; }
+.hex-lg .hex-in.tone-hacker .icon { width: 50px; height: 50px; stroke-width: 1.4; }
