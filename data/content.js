@@ -102,7 +102,8 @@ window.PORTFOLIO = {
       badgeImage: "",
       symbol: "chart",
       verifyUrl: "https://www.credly.com/badges/427b53bc-53ab-4f70-9de2-494ce611a501/public_url",
-      description: "Formación introductoria en ciencia de datos que abarca análisis de datos, ingeniería de datos y conceptos básicos de machine learning para la toma de decisiones basada en datos."
+      description: "Formación introductoria en ciencia de datos que abarca análisis de datos, ingeniería de datos y conceptos básicos de machine learning para la toma de decisiones basada en datos.",
+      description_en: "Introductory data science training covering data analysis, data engineering and machine learning basics for data-driven decision making."
     },
       {
       name: "Introduction to Modern AI",
@@ -111,7 +112,8 @@ window.PORTFOLIO = {
       type: "badge",
       badgeImage: "",
       verifyUrl: "https://www.credly.com/badges/5ac662ac-9f7d-4e3d-9896-08ca88d0549d/public_url",
-      description: "Curso de Cisco Networking Academy sobre IA moderna: uso de funciones con IA en aplicaciones, práctica de prompting con chatbots y fundamentos de cómo funcionan los modelos."
+      description: "Curso de Cisco Networking Academy sobre IA moderna: uso de funciones con IA en aplicaciones, práctica de prompting con chatbots y fundamentos de cómo funcionan los modelos.",
+      description_en: "Cisco Networking Academy course on modern AI: using AI features in applications, practicing prompting with chatbots and the fundamentals of how models work."
     },
   ],
 
@@ -128,9 +130,12 @@ window.PORTFOLIO = {
   recognitions: [
    {
       name: "Bootcamp Analista SOC Nivel 2: de los fundamentos a la operación y respuesta",
+      name_en: "SOC Analyst Bootcamp Level 2: from fundamentals to operations and response",
       issuer: "Comunidad DOJO · Women of Security Panamá",
+      issuer_en: "DOJO Community · Women of Security Panama",
       year: "2026",
       description: "Certificado de reconocimiento por asistencia, participación y aprovechamiento del programa. Panamá, 3 al 24 de octubre de 2026 · 24 horas.",
+      description_en: "Certificate of recognition for attendance, participation and performance in the program. Panama, October 3–24, 2026 · 24 hours.",
       image: "assets/img/certificado_Anny%20Vargas.pdf",
       showImage: false,
       symbol: "hacker",
@@ -138,9 +143,12 @@ window.PORTFOLIO = {
     },
     {
       name: "Bootcamp Fundamentos de Ciberseguridad 2026",
+      name_en: "Cybersecurity Fundamentals Bootcamp 2026",
       issuer: "Fundación Comunidad DOJO · Women of Security Panamá",
+      issuer_en: "DOJO Community Foundation · Women of Security Panama",
       year: "2026",
       description: "Certificado por asistencia, participación y aprovechamiento del programa. Panamá, 7 al 28 de marzo de 2026 · 22 horas.",
+      description_en: "Certificate for attendance, participation and performance in the program. Panama, March 7–28, 2026 · 22 hours.",
       image: "assets/img/cert_Anny%20Vargas.pdf",
       showImage: false,
       symbol: "devpc",
