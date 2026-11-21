@@ -55,6 +55,8 @@
   /* Símbolos adicionales (genéricos, no son logos de marcas). Se agregan al sprite al iniciar. */
   var EXTRA = {
     sheet: ["M5 4h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z", "M3 10h18M3 15h18M9 4v16"],
+    hacker: ["M12 3.5c-3 0-5 2.2-5 5 0 1.4.5 2.5 1.2 3.4L6 14.5c-1.6.6-2.5 1.8-2.5 3.5V20h17v-2c0-1.7-.9-2.9-2.5-3.5l-2.2-2.6c.7-.9 1.2-2 1.2-3.4 0-2.8-2-5-5-5z", "M9.6 9.3c0-1.3.9-2.3 2.4-2.3s2.4 1 2.4 2.3v2c0 1.3-1.1 2.3-2.4 2.3s-2.4-1-2.4-2.3z"],
+    devpc: ["M6 5h12a1.5 1.5 0 011.5 1.5V15h-15V6.5A1.5 1.5 0 016 5z", "M2.5 19h19M10 17h4", "M10.3 8.6L8.6 10.3l1.7 1.7M13.7 8.6l1.7 1.7-1.7 1.7"],
     cloud: ["M7 18h10a4 4 0 00.6-7.95A5.5 5.5 0 007 9.2 4.4 4.4 0 007 18z"],
     ai: ["M8 6h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z", "M9 2.5V6M12 2.5V6M15 2.5V6M9 18v3.5M12 18v3.5M15 18v3.5M2.5 9H6M2.5 12H6M2.5 15H6M18 9h3.5M18 12h3.5M18 15h3.5", "M8.3 15.2l1.9-5.4 1.9 5.4M8.9 13.5h2.6M14.4 9.8v5.4"],
     laptop: ["M6 5h12a1.5 1.5 0 011.5 1.5V15h-15V6.5A1.5 1.5 0 016 5z", "M2.5 19h19M10 17h4"]
@@ -76,12 +78,14 @@
     if (c.symbol) return String(c.symbol);
     var n = String(c.name || "").toLowerCase();
     if (/excel|hoja de c[aá]lculo/.test(n)) return "sheet";
+    if (/hack|pentest|red team|ethical/.test(n)) return "hacker";
     if (/\bai\b|\bia\b|inteligencia artificial|artificial intelligence|machine learning/.test(n)) return "ai";
     if (/power ?bi|datos|data|analytics/.test(n)) return "chart";
-    if (/linux/.test(n)) return "terminal";
+    if (/linux|\bsoc\b|bootcamp/.test(n)) return "terminal";
     if (/cyber|ciberseg/.test(n)) return "lock";
     if (/cloud|nube/.test(n)) return "cloud";
     if (/sistemas inform|hardware|soporte/.test(n)) return "laptop";
+    if (/program|script|python|c[oó]digo|developer/.test(n)) return "devpc";
     return c.type === "badge" ? "award" : "shield";
   }
 
@@ -92,6 +96,13 @@
     return t && t.length <= 20 && t.indexOf("FORMACI") !== 0 ? t : "";
   }
 
+  /* Emblema hexagonal con símbolo y texto corto (para certificaciones y reconocimientos sin imagen). */
+  function emblem(c) {
+    return el("div", { class: "hex hex-lg", role: "img", "aria-label": "Emblema" }, [
+      el("div", { class: "hex-in tone-" + pickSymbol(c) }, [icon(pickSymbol(c)), emblemLabel(c) ? el("span", { class: "hex-label", text: emblemLabel(c) }) : null])
+    ]);
+  }
+
   /* ---------- Certificaciones ---------- */
   function renderCerts() {
     var list = D.certifications || [];
@@ -100,9 +111,7 @@
       var img = safeImg(c.badgeImage);
       var visual = img
         ? el("img", { class: "badge-pic", src: img, alt: "Insignia: " + c.name, loading: "lazy" })
-        : el("div", { class: "hex hex-lg", role: "img", "aria-label": "Emblema de certificación" }, [
-            el("div", { class: "hex-in tone-" + pickSymbol(c) }, [icon(pickSymbol(c)), emblemLabel(c) ? el("span", { class: "hex-label", text: emblemLabel(c) }) : null])
-          ]);
+        : emblem(c);
       var meta = el("div", { class: "card-meta" }, [
         el("span", { text: c.issuer || "" }),
         c.date ? el("span", { text: c.date }) : null
@@ -126,6 +135,8 @@
   }
 
   /* ---------- Reconocimientos ---------- */
+  /* Campos opcionales: image (certificado), showImage:false (muestra emblema en vez de la imagen,
+     y la imagen se abre con el botón "Ver certificado"), logo (imagen propia), symbol, badgeLabel, verifyUrl. */
   function renderRecs() {
     var list = D.recognitions || [];
     if (!list.length) {
@@ -133,12 +144,24 @@
       return;
     }
     mount("rec-grid", list.map(function (r) {
-      var img = safeImg(r.image);
+      var img = safeImg(r.image), logo = safeImg(r.logo), preview;
+      if (img && r.showImage !== false) {
+        preview = el("a", { href: img, target: "_blank", rel: "noopener", class: "cert-link", "aria-label": "Ver certificado completo: " + r.name },
+          [el("img", { class: "card-photo cert-photo", src: img, alt: "Evidencia: " + r.name, loading: "lazy" })]);
+      } else if (logo) {
+        preview = el("div", { class: "badge-wrap" }, [el("img", { class: "badge-pic", src: logo, alt: "Logo: " + (r.issuer || r.name), loading: "lazy" })]);
+      } else {
+        preview = el("div", { class: "badge-wrap" }, [emblem({ name: r.name, issuer: r.issuer, symbol: r.symbol, badgeLabel: r.badgeLabel, type: "traditional" })]);
+      }
+      var actions = [];
+      if (safeUrl(r.verifyUrl)) actions.push(extLink(r.verifyUrl, "Verificar", "btn btn-primary btn-sm", "check"));
+      if (img && r.showImage === false) actions.push(extLink(img, "Ver certificado", "btn btn-primary btn-sm", "external"));
       return addCard(card(), [
-        img ? el("img", { class: "card-photo", src: img, alt: "Evidencia: " + r.name, loading: "lazy" }) : el("div", { class: "card-icon" }, [icon("award")]),
+        preview,
         el("h3", { text: r.name }),
         el("div", { class: "card-meta" }, [el("span", { text: r.issuer || "" }), r.year ? el("span", { text: String(r.year) }) : null]),
-        r.description ? el("p", { text: r.description }) : null
+        r.description ? el("p", { text: r.description }) : null,
+        actions.length ? el("div", { class: "card-actions" }, actions) : null
       ]);
     }));
   }
