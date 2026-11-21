@@ -155,7 +155,7 @@
       }
       var actions = [];
       if (safeUrl(r.verifyUrl)) actions.push(extLink(r.verifyUrl, "Verificar", "btn btn-primary btn-sm", "check"));
-      if (img && r.showImage === false) actions.push(extLink(img, "Ver certificado", "btn btn-primary btn-sm", "external"));
+      if (img && r.showImage === false) actions.push(el("a", { href: img, target: "_blank", rel: "noopener", class: "btn btn-primary btn-sm" }, [icon("external"), document.createTextNode("Ver certificado")]));
       return addCard(card(), [
         preview,
         el("h3", { text: r.name }),
