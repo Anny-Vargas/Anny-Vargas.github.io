@@ -131,7 +131,7 @@ window.PORTFOLIO = {
       issuer: "Comunidad DOJO · Women of Security Panamá",
       year: "2026",
       description: "Certificado de reconocimiento por asistencia, participación y aprovechamiento del programa. Panamá, 3 al 24 de octubre de 2026 · 24 horas.",
-      image: "assets/img/cert_Anny%20Vargas.pdf",
+      image: "assets/img/certificado_Anny%20Vargas.pdf",
       showImage: false,
       symbol: "hacker",
       badgeLabel: "Dojo"
@@ -141,7 +141,7 @@ window.PORTFOLIO = {
       issuer: "Fundación Comunidad DOJO · Women of Security Panamá",
       year: "2026",
       description: "Certificado por asistencia, participación y aprovechamiento del programa. Panamá, 7 al 28 de marzo de 2026 · 22 horas.",
-      image: "assets/img/certificado_Anny%20Vargas.pdf",
+      image: "assets/img/cert_Anny%20Vargas.pdf",
       showImage: false,
       symbol: "devpc",
       badgeLabel: "Dojo"
